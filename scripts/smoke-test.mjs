@@ -1,0 +1,3 @@
+import fs from 'node:fs';import path from 'node:path';
+const root=process.cwd();const required=['src/App.tsx','src/services/aiService.ts','src/services/learningService.ts','src/services/studyService.ts','src/services/safetyService.ts','src/pages/FlashcardsPage.tsx','src/pages/QuizPage.tsx','src/pages/MyLearningPage.tsx','src/pages/ComparePage.tsx','src/pages/SafetyCenterPage.tsx','src/pages/InteractionCheckerPage.tsx','supabase/migrations/20260816000002_remaining_phases.sql','public/manifest.webmanifest','public/sw.js'];
+const missing=required.filter(f=>!fs.existsSync(path.join(root,f)));if(missing.length){console.error('Missing files:',missing);process.exit(1)}console.log(`MediVault smoke test passed: ${required.length} required files present.`);
